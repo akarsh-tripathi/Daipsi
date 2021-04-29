@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="alpha-1" package="com.exbliaktr.daipsi" android:installLocation="auto" android:versionCode="2">
+	<uses-sdk android:minSdkVersion="24" android:targetSdkVersion="29" />
+	<application android:label="Daipsi" android:theme="@style/MainTheme" android:icon="@drawable/daipsilogo" android:debuggable="false"></application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>

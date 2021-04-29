@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daipsi.MainViews.FullScreenVideo"
+             xmlns:video1="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms" xmlns:ffgif="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             NavigationPage.HasBackButton="True">
+    <Grid>
+        <video1:VideoView  x:Name="videouri" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ShowControls="True"  AutoPlay="False" VideoAspect="AspectFit" BackgroundColor="White" />
+        <ffgif:CachedImage Source="loadinggif.gif" BackgroundColor="Transparent" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="true" x:Name="loadingimage"/>
+    </Grid>
+    
+</ContentPage>

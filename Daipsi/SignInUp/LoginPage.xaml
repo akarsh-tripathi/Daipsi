@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daipsi.SignInUp.LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="White"
+              xmlns:ffgif1="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="115"/>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal" Margin="10" Spacing="0">
+                <ImageButton x:Name="BackButton" Source="BackButton.png" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" Clicked="BackButton_Clicked"/>
+                <Button Text="Back" TextColor="#212121" FontSize="Title" VerticalOptions="Center" BackgroundColor="Transparent"  HorizontalOptions="Center" Clicked="BackButton_Clicked" Padding="0"/>
+            </StackLayout >
+            <ffgif1:CachedImage x:Name="loadingimage" Source="loadingimage.gif" Grid.ColumnSpan="2" Scale="0.5" VerticalOptions="Center"
+                                HorizontalOptions="End" Aspect="AspectFit" BackgroundColor="Transparent" IsVisible="False"/>
+            
+            <Label Grid.Row="1" Grid.ColumnSpan="2" Text="DAIPSI" TextColor="#5B4F8D" FontSize="60" CharacterSpacing="0" FontAttributes="Bold" Margin="50,0,0,0" />
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                <Label  Text="Proceed with your"  TextColor="#212121" FontSize="30" Margin="50,0,0,0"/>
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Button x:Name="LoginNav"  Text="Login"  TextColor="Black" FontSize="30" Margin="50,0,0,0" FontAttributes="Bold" Padding="0" BackgroundColor="Transparent" Clicked="LoginNav_Clicked"/>
+                    <Label  Text="/"  TextColor="Black" FontSize="30" Margin="0,0,0,0" FontAttributes="Bold" Padding="0" BackgroundColor="Transparent" VerticalOptions="Center"/>
+                    <Button x:Name="RegisterNav"  Text="Register"  TextColor="Gray" FontSize="30" Margin="0,0,0,0" FontAttributes="Bold" Padding="0" BackgroundColor="Transparent" Clicked="RegisterNav_Clicked"/>
+                    
+                </StackLayout>
+            </StackLayout>
+            <StackLayout x:Name="loginstack" Grid.Row="3" Grid.ColumnSpan="2" Margin="50,0,0,0" Spacing="20" IsVisible="True">
+                <StackLayout>
+                    <Label Text="Username" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="loginusername" Placeholder="example@example.com" Margin="0,0,10,0" TextColor="Black" Keyboard="Email" ClearButtonVisibility="WhileEditing" PlaceholderColor="Gray" />
+                        <ImageButton Grid.Column="1" x:Name="emaillogpng" Source="emailpng.png" BackgroundColor="Transparent" Margin="14"  />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Password" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="loginpassword" Placeholder="Unique Password" Margin="0,0,10,0" TextColor="Black" IsPassword="True" ClearButtonVisibility="WhileEditing" PlaceholderColor="Gray" />
+                        <ImageButton Grid.Column="1" x:Name="seepass" Source="passwordshow.png" BackgroundColor="Transparent" Margin="10" Clicked="passshow_Clicked"  />
+                    </Grid>
+                </StackLayout>
+                <StackLayout x:Name="rememberstack" Orientation="Horizontal" Spacing="0" Margin="0"> 
+                    <CheckBox x:Name="rememberme_checkbox" IsChecked="False" Color="#6E1DC2"/>
+                    <Label Text="Remember Me !" VerticalOptions="Center" TextColor="Black"/>
+                </StackLayout>
+                <Label x:Name="remebered" Text="Login Id is saved. Tap login to proceed !" VerticalOptions="Center" TextColor="Black"  IsVisible="False"/>
+                <StackLayout Orientation="Horizontal" Spacing="2">
+                    <Button  x:Name="LoginButton" Text="Login" TextColor="White" BackgroundColor="#6E1DC2" Margin="0,0,10,0" FontSize="Large" FontAttributes="Bold" Clicked="LoginButton_Clicked" HorizontalOptions="FillAndExpand" CornerRadius="3"/>    
+                    <Button  x:Name="deletecred" Text="Delete" TextColor="White" BackgroundColor="Red" FontSize="17" FontAttributes="Bold" Clicked="deletecred_Clicked" HorizontalOptions="End" Margin="0,0,10,0" IsVisible="False" CornerRadius="3" />    
+                </StackLayout>
+                
+                <Button x:Name="forgetpass" Text="Contact" TextColor="#212121" BackgroundColor="Transparent" FontSize="14"  Clicked="forgetpass_Clicked"/>
+                
+            </StackLayout>
+            
+            <StackLayout x:Name="registerstack" Grid.Row="3" Grid.ColumnSpan="2" Margin="50,0,0,0" Spacing="20" IsVisible="False">
+                <StackLayout>
+                    <Label Text="Full Name" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="registerfullname" Placeholder="Pavin Krishna" Margin="0,0,10,0" TextColor="Black" ClearButtonVisibility="WhileEditing" PlaceholderColor="Gray"/>
+                        <Image Grid.Column="1" x:Name="username2png" Source="username.png" BackgroundColor="Transparent" Margin="10"  />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Email ID (UserName)" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="registerusername" Placeholder="example@example.com" Margin="0,0,10,0" TextColor="Black" Keyboard="Email" ClearButtonVisibility="WhileEditing" PlaceholderColor="Gray"/>
+                        <Image Grid.Column="1" x:Name="emailpng" Source="emailpng.png" BackgroundColor="Transparent" Margin="12"  />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Password" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="registerpassword" Placeholder="Unique Password" Margin="0,0,10,0" TextColor="Black" IsPassword="True" ClearButtonVisibility="WhileEditing" PlaceholderColor="Gray" />
+                        <ImageButton Grid.Column="1" x:Name="regseepass" Source="passwordshow.png" BackgroundColor="Transparent" Margin="10" Clicked="regseepass_Clicked"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Confirm Password" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="registerconfpassword" Placeholder="Confirm Unique Password" Margin="0,0,10,0" TextColor="Black" IsPassword="True" ClearButtonVisibility="WhileEditing" PlaceholderColor="Gray"  />
+                        <ImageButton Grid.Column="1" x:Name="regreseepass" Source="passwordshow.png" BackgroundColor="Transparent" Margin="10" Clicked="regreseepass_Clicked" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Age" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Picker Grid.ColumnSpan="2" x:Name="registerage" Title="Choose Your Age"  Margin="0,0,10,0" TextColor="Black" TitleColor="Gray">
+                            <Picker.Items>
+                                <x:String>10</x:String>
+                                <x:String>11</x:String>
+                                <x:String>12</x:String>
+                                <x:String>13</x:String>
+                                <x:String>14</x:String>
+                                <x:String>15</x:String>
+                                <x:String>16</x:String>
+                                <x:String>17</x:String>
+                                <x:String>18</x:String>
+                                <x:String>19</x:String>
+                                <x:String>20</x:String>
+                                <x:String>21</x:String>
+                                <x:String>22</x:String>
+                                <x:String>23</x:String>
+                                <x:String>24</x:String>
+                                <x:String>25</x:String>
+                                <x:String>26</x:String>
+                                <x:String>27</x:String>
+                                <x:String>28</x:String>
+                                <x:String>29</x:String>
+                                <x:String>30</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Image Grid.Column="1" x:Name="agepng" Source="agepng.png" BackgroundColor="Transparent" Margin="10" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Class/Course" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Picker Grid.ColumnSpan="2" x:Name="registerclasscourse" ItemDisplayBinding="{Binding NameOfCourse}" Title="Choose Your Class/Course"  Margin="0,0,10,0" TextColor="Black" TitleColor="Gray"/>
+                        <Image Grid.Column="1" x:Name="classcoursepng" Source="classorcourse.png" BackgroundColor="Transparent" Margin="10" />
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Phone Number" TextColor="#212121" FontSize="Large"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry Grid.ColumnSpan="2" x:Name="registerphoneno" Placeholder="Phone Number" Margin="0,0,10,0" TextColor="Black" Keyboard="Numeric" ClearButtonVisibility="WhileEditing" MaxLength="10" PlaceholderColor="Gray" />
+                        <ImageButton Grid.Column="1" x:Name="phonepng" Source="phonepng.png" BackgroundColor="Transparent" Margin="10" />
+                    </Grid>
+                </StackLayout>
+                <Button x:Name="Registerbutton" Text="Register" TextColor="White" BackgroundColor="#6E1DC2" Margin="0,0,10,10" FontSize="Large" FontAttributes="Bold" Clicked="Registerbutton_Clicked"  />
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

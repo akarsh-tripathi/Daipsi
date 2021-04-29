@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daipsi.MainViews.HomePage"
+             BackgroundImageSource="homepbg.png"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:circleimage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:converter="clr-namespace:Daipsi.Converter_Class" 
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             >
+        
+
+    <ContentPage.Resources>
+        <Style x:Key="Courses_Key" TargetType="Label">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="FontAttributes" 
+                                        Value="Bold"/>
+                                <Setter Property="TextColor"
+                                        Value="#6E1DC2"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="Grid_Key" TargetType="Grid">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" 
+                                        Value="LightSkyBlue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <ResourceDictionary>
+            <converter:ImageConverter x:Key="SourceConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    
+    <SwipeView x:Name="MainSwipe" BackgroundColor="Transparent" SwipeStarted="MainSwipe_SwipeStarted" Visual="Material"
+               SwipeEnded="MainSwipe_SwipeEnded" >
+
+        <SwipeView.LeftItems >
+            <SwipeItems >
+                <SwipeItemView IsEnabled="True">
+                    <ScrollView>
+                        <Grid WidthRequest="200" Margin="10,15,0,0">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="120"/>
+                                <RowDefinition Height="250"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--First Row of personal Details-->
+                            <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10" >
+                                <circleimage:CircleImage WidthRequest="30" x:Name="swipe_Userprofile" BackgroundColor="Transparent" Source="sampleuser.png"/>
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                    <Label x:Name="slidemenu_Username" Text="Pavin Krishna" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+                                    <Label x:Name="slidemenu_Usertype" Text="Student" TextColor="White" FontSize="Small" TextDecorations="Underline"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <!--Menu Items Part 1-->
+                            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="15,0,0,0" RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="homepng.png"/>
+                                <Button x:Name="SwipeHome" Grid.Row="0" Grid.Column="1" Text="Home" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeHome_Clicked"/>
+                                <Image Grid.Row="1" Grid.Column="0" Source="explorepng.png"/>
+                                <Button x:Name="SwipeExplore" Grid.Row="1" Grid.Column="1" Text="Explore" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeExplore_Clicked"/>
+                                <Image Grid.Row="2" Grid.Column="0" Source="bookmarkpng.png"/>
+                                <Button x:Name="SwipeBookmarks" Grid.Row="2" Grid.Column="1" Text="Bookmarks" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeExplore_Clicked"/>
+                                <Image Grid.Row="3" Grid.Column="0" Source="forumpng.png"/>
+                                <Button x:Name="SwipeForums" Grid.Row="3" Grid.Column="1" Text="Forums" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeExplore_Clicked"/>
+                                <Image Grid.Row="4" Grid.Column="0" Source="blogpng.png"/>
+                                <Button x:Name="SwipeBlog" Grid.Row="4" Grid.Column="1" Text="Blog" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeExplore_Clicked"/>
+                            </Grid>
+                            <!--The Line Seperator-->
+                            <BoxView Grid.Row="2" Grid.ColumnSpan="2" BackgroundColor="White" Color="White" HeightRequest="1" Opacity="0.2" VerticalOptions="Center" Margin="0,0,75,0"/>
+                            <!--The next set of operations-->
+                            <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="20,0,0,0" ColumnSpacing="10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="settingpng.png"/>
+                                <Button x:Name="SwipeSettings" Grid.Row="0" Grid.Column="1" Text="Setting" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeExplore_Clicked"/>
+                                <Image Grid.Row="1" Grid.Column="0" Source="helppng.png"/>
+                                <Button x:Name="SwipeHelp" Grid.Row="1" Grid.Column="1" Text="Help" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeExplore_Clicked"/>
+                            </Grid>
+                            <!--The Line Seperator-->
+                            <BoxView Grid.Row="4" Grid.ColumnSpan="2" BackgroundColor="White" Color="White" HeightRequest="1" Opacity="0.2" VerticalOptions="Center" Margin="0,0,75,0"/>
+                            <!--The Last set of Operations-->
+                            <Grid Grid.Row="5" Grid.ColumnSpan="2" Margin="20,0,0,0" ColumnSpacing="10" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Grid.Column="0" Source="signoutpng.png"/>
+                                <Button x:Name="SwipeLogout" Grid.Row="0" Grid.Column="1" Text="Log Out" BackgroundColor="Transparent" HorizontalOptions="Start" FontSize="Small" TextColor="White" FontAttributes="Bold" Clicked="SwipeLogout_Clicked"/>
+                            </Grid>
+                        </Grid>
+                    </ScrollView>
+                </SwipeItemView>
+            </SwipeItems>
+        </SwipeView.LeftItems>
+
+        <Grid x:Name="Swipegrid" >
+
+            <pancake:PancakeView x:Name="swipepancake" BackgroundColor="#F4F5FA">
+
+                <RefreshView x:Name="Refreshview" RefreshColor="Purple" Refreshing="RefreshView_Refreshing" IsRefreshing="False">
+                    <ScrollView VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+
+                        <Grid x:Name="Homepagegrid" >
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="250"/>
+                                <RowDefinition Height="400"/>
+                                <RowDefinition Height="400"/>
+                            </Grid.RowDefinitions>
+
+                            <!--First Main Grid-->
+                            <pancake:PancakeView BackgroundColor="White" CornerRadius="0,0,30,30">
+                            
+                                <Grid x:Name="infoandcontentgrid" Margin="10,10,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="1.5*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Spacing="5" Grid.Row="0" Grid.Column="0">
+                                        <circleimage:CircleImage WidthRequest="60" x:Name="Mainpage_Userprofilepic" BackgroundColor="Transparent" Source="sampleuser.png" Aspect="AspectFill"/>
+
+
+
+                                        <Label x:Name="Mainpage_Username" Text="Hi, Pavin" TextColor="#442FB1" FontSize="Medium" VerticalOptions="Center" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,20,0">
+                                        <ImageButton x:Name="AdminPanel" Source="menuhpng" BackgroundColor="Transparent" WidthRequest="20" Clicked="AdminPanel_Clicked" IsVisible="False"/>
+                                    </StackLayout>
+                                    <!-- Search Bar-->
+                                    <pancake:PancakeView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="Black" CornerRadius="5" Padding="3" Margin="10,10,10,10" Shadow="{pancake:ShadowMarkup Color=#F7F7F7,Offset='0,-10' }">
+                                        <SearchBar  Placeholder="Search" CancelButtonColor="Black" BackgroundColor="White" PlaceholderColor="Gray" TextColor="Black" />
+                                    </pancake:PancakeView>
+                                    <!--Courses-->
+
+                                    <CollectionView Grid.Row="2" Grid.ColumnSpan="2" x:Name="CoursesCollectionView" ItemsLayout="HorizontalList" HeightRequest="70" WidthRequest="30"  
+                                                    BackgroundColor="Transparent" Margin="5" SelectionMode="Single" SelectionChanged="CoursesCollectionView_SelectionChanged" ItemSizingStrategy="MeasureAllItems" ItemsUpdatingScrollMode="KeepScrollOffset" FlowDirection="RightToLeft" >
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout Orientation="Horizontal" Padding="10">
+                                                    <Frame BackgroundColor="White" BorderColor="SlateGray" HasShadow="True" CornerRadius="10" Margin="0" >
+                                                        <Label Text="{Binding Path=NameOfCourse}" TextColor="Black" FontSize="Small" 
+                                                               Padding="5" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource Courses_Key}"/>
+                                                    </Frame>
+                                                </StackLayout>
+
+                                            </DataTemplate>
+
+
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </Grid>
+                            </pancake:PancakeView>
+                            
+                            <!-- Second Grid Of Video List-->
+                            <StackLayout Grid.Row="1" Margin="20,0,10,0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                                
+                                <StackLayout Orientation="Horizontal" Margin="5">
+                                    <Image Source="homepng.png"/>
+                                    <Label Text="Subjects" TextColor="#A9A8B7" FontSize="Title" HorizontalOptions="Start" VerticalOptions="Start" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                                <CollectionView x:Name="Subjects_CollectionView" HeightRequest="350" BackgroundColor="Transparent"  ItemSizingStrategy="MeasureFirstItem"
+                                                SelectionMode="Single" SelectionChanged="Subjects_CollectionView_SelectionChanged">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" Span="2" VerticalItemSpacing="5"/>
+                                    </CollectionView.ItemsLayout>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ContentView>
+                                                <Frame WidthRequest="220" HeightRequest="330" CornerRadius="10" Margin="5,10,5,10" BackgroundColor="Transparent" HasShadow="True" Padding="0">
+                                                    <Grid Style="{StaticResource Grid_Key}" BackgroundColor="White">
+
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="150"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="0.5*"/>
+                                                            <RowDefinition Height="0.5*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image x:Name="Mainpage_VideoThumbnail" Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" >
+                                                            <Image.Source>
+                                                                <UriImageSource Uri="{Binding Path=VideoThumbnail}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Path=VideoName}" TextColor="#3E3665" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"  Margin="5"/>
+                                                        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2"  Margin="5,0,5,0" HorizontalOptions="FillAndExpand">
+                                                            <Label Text="{Binding Path=SubjectName}" TextColor="#3E3665" FontSize="13"  VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                                                            <Label Text="{Binding Path=DateUploaded}" TextColor="#3E3665" FontSize="10"  VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="5" Spacing="10">
+                                                            <Image Source="username.png" Aspect="AspectFit"  VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                                                            <Button Text="Start the Course !" TextColor="#696872" FontSize="10" FontAttributes="Bold" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </Frame>
+                                            </ContentView>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                    <CollectionView.EmptyView>
+                                        <ContentView>
+                                            <StackLayout HorizontalOptions="CenterAndExpand"
+                                                 VerticalOptions="CenterAndExpand">
+                                                <Label Text="No results matched your filter."
+                                                   Margin="10,25,10,10"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"
+                                                   HorizontalOptions="Fill"
+                                                   HorizontalTextAlignment="Center" TextColor="Black" />
+                                                <Label Text="Try searching other courses!"
+                                                   FontAttributes="Italic"
+                                                   FontSize="12"
+                                                   HorizontalOptions="Fill"
+                                                   HorizontalTextAlignment="Center" TextColor="Black"/>
+                                            </StackLayout>
+                                        </ContentView>
+                                    </CollectionView.EmptyView>
+                                </CollectionView>
+                            </StackLayout>
+
+                            <!-- Bookmark Grid 3-->
+                            <StackLayout Grid.Row="2" Margin="20,0,10,0" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+
+                                <StackLayout Orientation="Horizontal" Margin="5" >
+                                    <Image Source="bookmarkiconnotpressed.png"/>
+                                    <Label Text="Bookmarks" TextColor="#A9A8B7" FontSize="Title" HorizontalOptions="Start" VerticalOptions="Start" FontAttributes="Bold"/>
+                                </StackLayout>
+                                <CollectionView x:Name="Bookmarks_COllectionView" HeightRequest="350" BackgroundColor="#F4F5FA" ItemSizingStrategy="MeasureAllItems"
+                                                SelectionMode="Single" SelectionChanged="Bookmarks_COllectionView_SelectionChanged" >
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="5"/>
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ContentView>
+                                                <Frame WidthRequest="220" HeightRequest="300" CornerRadius="10" Margin="5,10,5,10" BackgroundColor="Transparent" HasShadow="True" Padding="0">
+                                                    <Grid Style="{StaticResource Grid_Key}" BackgroundColor="White">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="150"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="0.5*"/>
+                                                            <RowDefinition Height="0.5*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Image x:Name="Bookmark_VideoThumbnail" Grid.Row="0" Grid.ColumnSpan="2" Aspect="AspectFill" >
+                                                            <Image.Source>
+                                                                <UriImageSource Uri="{Binding Path=VideoThumbnail}"/>
+                                                            </Image.Source>
+                                                        </Image>
+                                                        <Label Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Path=VideoName}" TextColor="Red" FontSize="16" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Start"  Margin="5"/>
+                                                        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2"  Margin="5" HorizontalOptions="FillAndExpand">
+                                                            <Label Text="{Binding Path=SubjectName}" TextColor="#3E3665" FontSize="10" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Fill"/>
+                                                            <Label Text="{Binding Path=DateUploaded}" TextColor="#3E3665" FontSize="10" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                                        </StackLayout>
+                                                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Margin="5" Spacing="10">
+                                                            <Image Source="bookmarkpressed.png" Aspect="AspectFit"  VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                                                            <Label Text="Bookmarked video!" TextColor="#696872" FontSize="10" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="End"/>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </Frame>
+                                            </ContentView>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                    <CollectionView.EmptyView>
+                                        <ContentView>
+                                            <StackLayout HorizontalOptions="CenterAndExpand"
+                                                 VerticalOptions="CenterAndExpand">
+                                                <Label Text="You don't have any bookmarked videos."
+                                                   Margin="10,25,10,10"
+                                                   FontAttributes="Bold"
+                                                   FontSize="18"
+                                                   HorizontalOptions="Fill"
+                                                   HorizontalTextAlignment="Center" TextColor="Black" />
+                                                <Label Text="Try adding one!"
+                                                   FontAttributes="Italic"
+                                                   FontSize="12"
+                                                   HorizontalOptions="Fill"
+                                                   HorizontalTextAlignment="Center" TextColor="Black"/>
+                                            </StackLayout>
+                                        </ContentView>
+                                    </CollectionView.EmptyView>
+                                </CollectionView>
+                                
+                            </StackLayout>
+                            
+                            <!--Trick to close the slide menu-->
+                            <BoxView x:Name="swipeclosebox" Grid.RowSpan="3" Color="Transparent" IsVisible="False">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                        </Grid>
+                    </ScrollView>
+                </RefreshView>
+            </pancake:PancakeView>
+        </Grid>
+    </SwipeView>
+
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daipsi.MainPage"
+             BackgroundColor="#4C3B89"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <ImageButton Grid.RowSpan="3" x:Name="Logo" Source="daipsilogo" Aspect="AspectFit" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent" Clicked="Logo_Clicked" Margin="60" />
+        <pancake:PancakeView BackgroundColor="White" CornerRadius="20,0,20,0" VerticalOptions="Start" HorizontalOptions="End" Margin="0,30,0,0">
+            <Button Text="Next" TextColor="Black" Padding="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White" Clicked="Logo_Clicked" />
+        </pancake:PancakeView>
+        <StackLayout  Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label Text="DAIPSI" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" FontAttributes="Bold" CharacterSpacing="3" />    
+            <Label Text="'Updated Earth'" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Medium" FontAttributes="Bold"  />    
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal" Grid.Row="2" Margin="30" HorizontalOptions="Center" Spacing="0" VerticalOptions="CenterAndExpand">
+            <Label Text="MADE WITH" TextColor="White" FontSize="Small" FontAttributes="Bold" VerticalOptions="Center"/>
+            <Image Source="heart.png" Aspect="AspectFit" Margin="10" />
+            <Button BackgroundColor="Transparent" x:Name="EB" Text="EXPLOIT BLIZZARD" TextColor="#06FE01" FontSize="Small" FontAttributes="Bold" VerticalOptions="Center" Padding="0" BorderWidth="0" BorderColor="Transparent" Clicked="EB_Clicked"/>
+        </StackLayout>
+        
+    </Grid>
+</ContentPage>

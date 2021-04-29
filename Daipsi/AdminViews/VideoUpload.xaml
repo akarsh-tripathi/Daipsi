@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daipsi.AdminViews.VideoUpload"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:ffgif1="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+
+    <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal" Margin="10" Spacing="0">
+                <ImageButton x:Name="BackButtonimg" Source="BackButton.png" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" Clicked="BackButtonimg_Clicked"/>
+                <Button x:Name="backbutton" Text="Back" TextColor="#212121" BackgroundColor="Transparent" FontSize="Title" VerticalOptions="Center" Clicked="backbutton_Clicked"/>
+            </StackLayout >
+            <ffgif1:CachedImage x:Name="loadingimage"  Source="loadingimage.gif" Grid.ColumnSpan="2" Scale="0.5" VerticalOptions="Center" HorizontalOptions="End"
+                                 Aspect="AspectFit" IsEnabled="True" BackgroundColor="Transparent" IsVisible="False"/>
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                <Label  Text="Proceed with your Upload"  TextColor="#212121" FontSize="25" Margin="20,0,0,0"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Margin="20,0,10,0" Spacing="10" >
+                
+                <Frame BackgroundColor="White" Padding="0" BorderColor="Black" >
+                    <Entry x:Name="VideoName" Placeholder="Enter the Video Name" PlaceholderColor="Gray" TextColor="Black" FontSize="15" MaxLength="15"/>
+                </Frame>
+                <Frame BackgroundColor="White" Padding="2" BorderColor="Black">
+                    <DatePicker x:Name="Datepicker"  TextColor="Black" FontSize="15" Format="D" />
+                </Frame>
+                <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="FillAndExpand">
+                    <Button x:Name="ThumbnailUpload" Text="Upload Thumbnail" BackgroundColor="Black" CornerRadius="5" TextColor="White" FontSize="13" FontAttributes="Bold" Clicked="ThumbnailUpload_Clicked" HorizontalOptions="FillAndExpand"/>    
+                    <Button x:Name="Thumbnaildelete" Text="Delete" BackgroundColor="red" CornerRadius="5" TextColor="White" FontSize="13" FontAttributes="Bold" Clicked="Thumbnaildelete_Clicked" HorizontalOptions="End" IsVisible="False"/>    
+                </StackLayout>
+                <Label x:Name="thumbnailuploaddone" Text="Thumbnail was Uploaded" TextColor="Red" HorizontalOptions="End" IsVisible="False"/>
+                <StackLayout Orientation="Horizontal" Spacing="2" HorizontalOptions="FillAndExpand">
+                    <Button x:Name="VideoUploads" Text="Upload Course Video" BackgroundColor="Black" CornerRadius="5" TextColor="White" FontSize="13" FontAttributes="Bold" Clicked="VideoUpload_Clicked" HorizontalOptions="FillAndExpand"/>
+                    <Button x:Name="Videodelete" Text="Delete" BackgroundColor="red" CornerRadius="5" TextColor="White" FontSize="13" FontAttributes="Bold" Clicked="Videodelete_Clicked"  HorizontalOptions="End" IsVisible="False"/>
+                </StackLayout>
+                <Label x:Name="videouploaddone" Text="Video was Uploaded" TextColor="Red" HorizontalOptions="End" IsVisible="False"/>
+                <Frame BackgroundColor="White" Padding="2" BorderColor="Black">
+                    <Picker x:Name="CoursePicker" ItemDisplayBinding="{Binding NameOfCourse}" Title="Enter the Course" BackgroundColor="White" TextColor="Black" TitleColor="Gray" FontSize="15" />
+                </Frame>
+                <Label x:Name="Coursename" Text="{Binding Selecteditem.NameOfCourse}" IsVisible="false"/>
+                <Frame BackgroundColor="White" Padding="0" BorderColor="Black" >
+                    <Entry x:Name="Subjectname" Placeholder="Enter the subject name" PlaceholderColor="Gray" TextColor="Black" FontSize="15" MaxLength="20"/>
+                </Frame>
+                <Frame BackgroundColor="White" Padding="0" BorderColor="Black" >
+                    <Editor x:Name="VideoDesc" Placeholder="Enter the Video Description (max. 200 words)" PlaceholderColor="Gray" TextColor="Black" MaxLength="200" MinimumHeightRequest="100" AutoSize="TextChanges" IsTextPredictionEnabled="True" FontSize="15" />
+                </Frame>
+                
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox x:Name="CheckValidation" IsChecked="False" IsEnabled="True" BackgroundColor="White" />
+                    <Label Text="Check and confirm upload!" TextColor="Black" FontSize="15" VerticalOptions="Center"/>
+                </StackLayout>
+                
+                <Button x:Name="Uploadbutton" Text="Upload" BackgroundColor="Black" CornerRadius="5" TextColor="White" FontAttributes="Bold" Margin="30,40,30,20" Clicked="Uploadbutton_Clicked" />
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

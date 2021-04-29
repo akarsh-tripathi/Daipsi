@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Daipsi.MainViews.VideoPlayer"
+             BackgroundColor="Transparent"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:video1="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+             xmlns:ffgif1="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    <ScrollView VerticalScrollBarVisibility="Never">
+        <Grid>
+            <pancake:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="White">
+                <Grid  Margin="30,20,20,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="70"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Orientation="Horizontal" Spacing="0">
+                        <ImageButton x:Name="BackButton" Source="BackButton.png" BackgroundColor="Transparent" VerticalOptions="Center" HorizontalOptions="Center" Clicked="backbuttontext_Clicked"/>
+                        <Button x:Name="backbuttontext" Text="Back" TextColor="#212121" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" BackgroundColor="Transparent" Clicked="backbuttontext_Clicked" />
+                    </StackLayout>
+                    <ffgif1:CachedImage x:Name="videoloading" Source="loadinggif.gif" BackgroundColor="Transparent" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="false"/>
+                    <Label x:Name="Coursename" Grid.Row="0" Grid.Column="1" Text="Course Name"  FontSize="18" TextColor="Black" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                    <Frame BorderColor="Black" BackgroundColor="White" Grid.Row="1" Grid.ColumnSpan="2" Padding="1" MinimumHeightRequest="300" >
+                        <StackLayout HorizontalOptions="Fill" VerticalOptions="Fill">
+                            <video1:VideoView  x:Name="videouri" VerticalOptions="FillAndExpand" ShowControls="True"  AutoPlay="False" VideoAspect="AspectFit" BackgroundColor="White"/>
+                            <Button x:Name="fullscreenvideo" Text="Full Screen" BackgroundColor="Black" TextColor="White" FontSize="16" FontAttributes="Bold" Clicked="fullscreenvideo_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <Label x:Name="Videoname" Grid.Row="2" Grid.Column="0" Text="Video Name" FontSize="20" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold"/>
+                    <ImageButton x:Name="bookmarkedoornot" Grid.Row="2" Grid.Column="1" Source="bookmarkiconnotpressed.png" BackgroundColor="Transparent" Clicked="bookmarkedoornot_Clicked" Margin="0" VerticalOptions="Center" HorizontalOptions="End" Scale="2"/>
+                    <ImageButton x:Name="bookmarked" Grid.Row="2" Grid.Column="1" Source="bookmarkpressed.png" BackgroundColor="Transparent" Clicked="bookmarked_Clicked" Margin="0" VerticalOptions="Center" HorizontalOptions="End" IsVisible="False" Scale="2"/>
+                    <Label x:Name="Descriptionname" Grid.Row="3" Grid.ColumnSpan="2" Text="Video Description" FontSize="16" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+                    <Label x:Name="Subjectname" Grid.Row="4" Grid.Column="0" Text="Subject Name" FontSize="17" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start"/>
+
+                    <Label x:Name="DateUploaded" Grid.Row="4" Grid.Column="1" Text="Date Uploaded" FontSize="15" TextColor="Black" VerticalOptions="Center" HorizontalOptions="End"/>
+                    <Button Grid.Row="5" Grid.ColumnSpan="2" Text="Go Back" BackgroundColor="White" TextColor="#6E1DC2" BorderWidth="0.3" FontSize="Medium" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="200" BorderColor="Black" CornerRadius="10" Clicked="backbuttontext_Clicked"/>
+                    
+                </Grid>
+            </pancake:PancakeView>
+            <BoxView x:Name="loadingbox" Color="White" BackgroundColor="White" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="false"/>
+            <ffgif1:CachedImage x:Name="loadingimage" Source="loadingimage.gif" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="false"  />
+        </Grid>
+    </ScrollView>
+</ContentPage>
